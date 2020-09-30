@@ -1,0 +1,124 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Tutorial Information</h1>
+</div>
+<!-- Table For Display Tutorial Data Start -->
+<div id="tutorial_details">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Tutorial Title</th>
+                <th>Tutorial Price</th>
+                <th>Description</th>
+                <th colspan="2" align="center">Operations</th>
+            </tr>
+        </thead>
+        <tbody id="tutorial_data">
+            <tr>
+                <td colspan="5" align="center">There is No Tutorial Data</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<!-- Table For Display Tutorial Data Ends-->
+
+<!-- Add Tutorial Dialog Box Start -->
+<div class="modal" tabindex="-1" role="dialog" id="add">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add New Tutorial</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="title">Enter Tutorial Title: </label>
+                        <input type="text" class="form-control" id="title">
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Enter Tutorial Description: </label>
+                        <textarea class="form-control" rows="6" id="description"></textarea>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="price">Enter Tutorial Price: </label>
+                        <input type="number" class="form-control" id="price">
+                    </div>
+                    <div class="form-group" id="result">
+
+                    </div>
+                    <button type="button" onclick="addTutorial()" class="btn btn-primary">Add New Tutorial</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Add Tutorial Dialog Box Ends -->
+
+<!-- Edit Tutorial Dialog Box Start -->
+<div class="modal" tabindex="-1" role="dialog" id="update">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Edit Tutorial Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+
+                    <div class="form-group">
+
+                        <input type="hidden" class="form-control" id="tutorial_id">
+
+                    </div>
+                    <div class="form-group">
+                        <label for="title_edit">Enter Tutorial Title: </label>
+                        <input type="text" class="form-control" id="title_edit">
+                    </div>
+                    <div class="form-group">
+                        <label for="description_edit">Enter Tutorial Description: </label>
+                        <textarea class="form-control" rows="6" id="description_edit"></textarea>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="price_edit">Enter Tutorial Price: </label>
+                        <input type="number" class="form-control" id="price_edit">
+                    </div>
+                    <div class="form-group" id="resultUpdate">
+
+
+                    </div>
+                    <button type="button" onclick="updateTutorial()" class="btn btn-primary">Update Tutorial Details</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Edit Tutorial Dialog Box Ends -->
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            loadDetails();
+        });
+    </script>
+}
